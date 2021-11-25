@@ -1,0 +1,16 @@
+*{
+    background:rgb(240,240,240);
+}
+.form_div{
+    
+    
+    width: 30%;
+    justify-content: center;
+    margin-top:20%;
+    margin-bottom:20%;
+    transform: translate(-0%, -20%);
+    
+    
+    
+}
+
