@@ -76,13 +76,26 @@
             } ?>
                 </div>
         
-        <div class="footer">
-           
-            <a href="https://github.com/GreysonStalcup/pokeshort"><img src="/img/github.png" name="github_img" alt="github image" /></a>
-                
-        </div>
+        
     </div>
-</center>
-</section>
+                </center>
+            </section>
+            <!-- Footer -->
+<footer class="page-footer font-small cyan darken-3">
+
+<!-- Footer Elements -->
+
+
+
+
+<div class="footer-copyright text-center py-3">
+<a href="https://github.com/GreysonStalcup/pokeshort"> <img src="/img/github.png" width=36 height=36></a><br>
+    © 2020 Pokeshort
+  
+</div>
+
+
+</footer>
+
 </body>
 </html>
