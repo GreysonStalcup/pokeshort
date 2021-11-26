@@ -1,4 +1,14 @@
 <?php 
+    include "db.php";
+
+    $db = new Database("db", "64594", "root", "root", "url_short");
+
+    $db = $db->connect();
+
+    $stmt = $db->query("SELECT * FROM urls");
+    $urls = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    
     function GrabPokemon(){
         $min = 0;
         $max = 300; 
@@ -15,6 +25,7 @@
         
         $final[0] = $pokemon->name;
         $final[1] = $image;
+        $final[2] = $id;
 
         
         return $final;
@@ -36,23 +47,42 @@
 </head>
 <body>
     <center>
+    <section class="form">
     <div class="form_div">
         <h1>PokéShort</h1>
         <br/><br/>
-        <form action="shorten.php" method="post">
+        <form action="/add/index.php" method="post">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="e.g. http://www.yourwebsite.com/" aria-label="Your URL" aria-describedby="button-addon2">
-                <button style="background-color:rgb(36, 150, 255); color:white;" class="btn btn-outline-secondary" type="button" id="button-addon2">Throw Pokeball!</button>
+                <input type="text" name="long_url" class="form-control" placeholder="e.g. http://www.yourwebsite.com/" aria-label="Your URL" aria-describedby="button-addon2">
+                <input type="hidden" name="pokemon" value=<?php echo $pokemon[0] ?> />
+                <input type="hidden" name="image" value=<?php echo $pokemon[1] ?> />
+                <input type="hidden" name="pokemon_id" value=<?php echo $pokemon[2] ?> />
+                <button style="background-color:rgb(36, 150, 255); color:white;" class="btn btn-outline-secondary" type="submit" id="button-addon2">Throw Pokeball!</button>
             </div>
+            
         </form>
+        <hr>
+        <?php if(isset($_GET['i'])){
+                $id = $_GET['i'];
+                $query = "SELECT * FROM urls WHERE ID = :ID LIMIT 1";
+                $stmt = $db->prepare($query);
+                $params = array(
+                    "ID" => $id
+                );
+                $stmt->execute($params);
+                $alerturl = $stmt->fetch();
+                $html = '<div class="alert alert-success" role="alert">Your shortened URL is: <a class="alert-link" href=/r?p=' .  $alerturl['pokemon'] . '&c=' . $alerturl['ID'] . '>'. 'localhost/r?p=' .  $alerturl['pokemon'] . '&c=' . $alerturl['ID'] . '</div>';
+                echo $html;
+            } ?>
                 </div>
+        
         <div class="footer">
-            <ul>
-        <li><img src="/img/github.png" name="github_img" alt="github image" /></li>
-                </ul>
-    
+           
+            <a href="https://github.com/GreysonStalcup/pokeshort"><img src="/img/github.png" name="github_img" alt="github image" /></a>
+                
+        </div>
     </div>
-                </center>
-    
+</center>
+</section>
 </body>
 </html>
