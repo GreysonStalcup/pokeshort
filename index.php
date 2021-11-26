@@ -71,7 +71,7 @@
                 );
                 $stmt->execute($params);
                 $alerturl = $stmt->fetch();
-                $html = '<div class="alert alert-success" role="alert">Your shortened URL is: <a class="alert-link" href=/r?p=' .  $alerturl['pokemon'] . '&c=' . $alerturl['ID'] . '>'. 'localhost/r?p=' .  $alerturl['pokemon'] . '&c=' . $alerturl['ID'] . '</div>';
+                $html = '<div class="alert alert-success" role="alert">Your shortened URL is: <a class="alert-link" href=/r?p=' .  $alerturl['pokemon'] . '&c=' . $alerturl['ID'] . '>'. 'localhost/r?p=' .  $alerturl['pokemon'] . '&c=' . $alerturl['ID'] . ' </a><hr><p class=mb-0">Your random pokemon is ' . $alerturl['pokemon'] . " and is now associated with this link." . '<img src="'. $alerturl['image'] .'"</div>';
                 echo $html;
             } ?>
                 </div>
@@ -84,7 +84,25 @@
 <footer class="page-footer font-small cyan darken-3">
 
 <!-- Footer Elements -->
+<div class="container">
 
+  <!-- Grid row-->
+  <div class="row">
+
+    <!-- Grid column -->
+    <div class="col-md-12 py-5">
+      <div class="mb-5 flex-center">
+
+        
+        </a>
+      </div>
+    </div>
+    <!-- Grid column -->
+
+  </div>
+  <!-- Grid row-->
+
+</div>
 
 
 
