@@ -20,7 +20,7 @@
     $url = $stmt->fetch();
 
 
-    //header("Refresh:5; URL=" . $url['long_url']);
+    header("Refresh:5; URL=" . $url['long_url']);
     
     
 ?>
