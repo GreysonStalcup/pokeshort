@@ -13,3 +13,4 @@ $url = "https://pokeapi.co/api/v2/pokemon/";
 ### ToDo
 * Add landing page when using shortened URL -> On landing page, display pokemon and some flavor text about the pokemon for approx 5 seconds
 * Remove unused wrappers
+* Fix CSS on Alert box
